@@ -1,0 +1,93 @@
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-calendars/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-lists/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
+
+
+#root {
+    display: flex;
+    align-content: start;
+    justify-items: left;
+}
+
+body {
+    place-items: start left;
+}
+
+/*.lesson-form {
+    margin-top: 10px;
+    border: 2px solid #191919;
+    border-radius: 10px;
+    width: 290px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.week-container {
+    border: 2px solid #191919;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.lesson-form__description-container {
+    display: flow;
+    gap: 10px 10px;
+}
+
+.lesson-form__description-container > * {
+    display: block;
+}
+
+.lesson-form__input-container {
+gap: 10px;
+}
+
+.lesson-form__input-container > * {
+    display: block;
+}
+
+
+.day-container {
+    display: block;
+    justify-items: center;
+    width: 290px;
+    border: 2px solid #00ff21;
+}
+
+.add-lesson-button {
+    display: block;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.teacher-label {
+    display: block;
+}*/
+
+
+
+
+.schedule-save-button {
+    border: solid 3px black;
+    justify-self: center;
+}
+
+.save-button-container {
+    display: grid;
+    padding: 50px;
+}
+
+.week-evennes-description {
+    padding-top: 70px;
+}

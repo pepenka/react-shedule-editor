@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-expressions */
+/* eslint-disable @typescript-eslint/no-explicit-any */ 
+
 import './App.css'
 import { ScheduleComponent, ViewsDirective, ViewDirective, Day, Week, Inject, DragAndDrop } from '@syncfusion/ej2-react-schedule';
 import { DateTimePickerComponent } from '@syncfusion/ej2-react-calendars';
@@ -11,9 +11,7 @@ import DayLessons from './day';
 import ScheduleClass from './ScheduleClass';
 import WeekLessons from './week';
 
-function Schedule() {
-
-
+function Schedule(this: any) {
     const onPopupOpen = (args: any) => {
         if (args.type === 'Editor') {
             const statusElement = args.element.querySelector('#EventType');
@@ -23,96 +21,115 @@ function Schedule() {
         }
     }
 
-    const editorTemplate = (props) => {
+    const editorTemplate = (props: any) => {
         console.log(props);
         
-        let date: Date;
+        let date: Date | null = null;
         if (props.EndTime) {
-            console.log(props.EndTime);
             date = props.EndTime;
-            console.log(date);
-            
-            date.setHours(date.getHours() + 1);
-            console.log(date);
+            date?.setHours(date.getHours() + 1);
         }
 
-        return (props !== undefined ? <table className="custom-event-editor" > <tbody>
-            <tr><td className="e-textlabel">Предмет</td><td colSpan={4}>
-                <input id="Summary" className="e-field e-input" type="text" name="Subject"  />
-            </td></tr>
+        return (<table className="custom-event-editor">
+            <tbody>
+            <tr>
+                <td className="e-textlabel">Предмет</td>
+                <td colSpan={4}>
+                    <input id="Summary" className="e-field e-input" type="text" name="Subject"/>
+                </td>
+            </tr>
 
-            <tr><td className="e-textlabel">Препод</td><td colSpan={4}>
-                <input id="teacher" className="e-field e-input" type="text" name="teacher" />
-            </td></tr>
+            <tr>
+                <td className="e-textlabel">Препод</td>
+                <td colSpan={4}>
+                    <input id="teacher" className="e-field e-input" type="text" name="teacher"/>
+                </td>
+            </tr>
 
-            <tr><td className="e-textlabel">Аудитория</td><td colSpan={4}>
-                <input id="class" className="e-field e-input" type="text" name="class" />
-            </td></tr>
+            <tr>
+                <td className="e-textlabel">Аудитория</td>
+                <td colSpan={4}>
+                    <input id="class" className="e-field e-input" type="text" name="class"/>
+                </td>
+            </tr>
 
-            <tr><td className="e-textlabel">Тип занятия</td><td colSpan={4}>
-                <DropDownListComponent
-                    id="lessonType"
-                    placeholder=''
-                    data-name="lessonType"
-                    className="e-field"
-                    dataSource={['Лабораторная работа', 'Практика', 'Лекция', 'Другое']}
-                    value={props.EventType || null}
-                    name="lessonType">
-                </DropDownListComponent>
-            </td></tr>
+            <tr>
+                <td className="e-textlabel">Тип занятия</td>
+                <td colSpan={4}>
+                    <DropDownListComponent
+                        id="lessonType"
+                        placeholder=''
+                        data-name="lessonType"
+                        className="e-field"
+                        dataSource={['Лабораторная работа', 'Практика', 'Лекция', 'Другое']}
+                        value={props.EventType || null}
+                        name="lessonType">
+                    </DropDownListComponent>
+                </td>
+            </tr>
 
-            <tr><td className="e-textlabel">Корпус</td><td colSpan={4}>
-                <DropDownListComponent
-                    id="building" placeholder=''
-                    data-name="building"
-                    className="e-field"
-                    dataSource={['1', '2', '3', '4', '5']}
-                    value={props.EventType || null}>
-                </DropDownListComponent>
-            </td></tr>
+            <tr>
+                <td className="e-textlabel">Корпус</td>
+                <td colSpan={4}>
+                    <DropDownListComponent
+                        id="building" placeholder=''
+                        data-name="building"
+                        className="e-field"
+                        dataSource={['1', '2', '3', '4', '5']}
+                        value={props.EventType || null}>
+                    </DropDownListComponent>
+                </td>
+            </tr>
 
 
-            <tr><td className="e-textlabel">Начало в </td><td colSpan={4}>
-                <DateTimePickerComponent
-                    step={5}
-                    format='HH:mm'
-                    id="StartTime"
-                    data-name="StartTime"
-                    name="StartTime"
-                    value={new Date(props.endTime || props.EndTime)}
-                    className="e-field"
+            <tr>
+                <td className="e-textlabel">Начало в</td>
+                <td colSpan={4}>
+                    <DateTimePickerComponent
+                        step={5}
+                        format='HH:mm'
+                        id="StartTime"
+                        data-name="StartTime"
+                        name="StartTime"
+                        value={new Date(props.endTime || props.EndTime)}
+                        className="e-field"
 
-                    min={new Date(
-                        new Date(props.endTime || props.EndTime).getFullYear(),
-                        new Date(props.endTime || props.EndTime).getMonth(),
-                        new Date(props.endTime || props.EndTime).getDay(), 8)}
-                    max={new Date(
-                        new Date(props.endTime || props.EndTime).getFullYear(),
-                        new Date(props.endTime || props.EndTime).getMonth(),
-                        new Date(props.endTime || props.EndTime).getDay(), 21, 20)}
-                ></DateTimePickerComponent>
-            </td></tr>
+                        min={new Date(
+                            new Date(props.endTime || props.EndTime).getFullYear(),
+                            new Date(props.endTime || props.EndTime).getMonth(),
+                            new Date(props.endTime || props.EndTime).getDay(), 8)}
+                        max={new Date(
+                            new Date(props.endTime || props.EndTime).getFullYear(),
+                            new Date(props.endTime || props.EndTime).getMonth(),
+                            new Date(props.endTime || props.EndTime).getDay(), 21, 20)}
+                    ></DateTimePickerComponent>
+                </td>
+            </tr>
 
-            <tr><td className="e-textlabel">Конец в </td><td colSpan={4}>
-                <DateTimePickerComponent
-                    step={5}
-                    format='HH:mm'
-                    id="EndTime"
-                    data-name="EndTime"
-                    value={date || new Date(props.endTime || props.EndTime)}
-                    className="e-field"
+            <tr>
+                <td className="e-textlabel">Конец в</td>
+                <td colSpan={4}>
+                    <DateTimePickerComponent
+                        step={5}
+                        format='HH:mm'
+                        id="EndTime"
+                        data-name="EndTime"
+                        value={date || new Date(props.endTime || props.EndTime)}
+                        className="e-field"
 
-                    min={new Date(
-                        new Date(props.endTime || props.EndTime).getFullYear(),
-                        new Date(props.endTime || props.EndTime).getMonth(),
-                        new Date(props.endTime || props.EndTime).getDay(), 8)}
-                    max={new Date(
-                        new Date(props.endTime || props.EndTime).getFullYear(),
-                        new Date(props.endTime || props.EndTime).getMonth(),
-                        new Date(props.endTime || props.EndTime).getDay(), 21, 20)} >
-                </DateTimePickerComponent>
-            </td></tr>
-        </tbody ></table > : <div></div>);
+                        min={new Date(
+                            new Date(props.endTime || props.EndTime).getFullYear(),
+                            new Date(props.endTime || props.EndTime).getMonth(),
+                            new Date(props.endTime || props.EndTime).getDay(), 8)}
+                        max={new Date(
+                            new Date(props.endTime || props.EndTime).getFullYear(),
+                            new Date(props.endTime || props.EndTime).getMonth(),
+                            new Date(props.endTime || props.EndTime).getDay(), 21, 20)}>
+                    </DateTimePickerComponent>
+                </td>
+            </tr>
+            </tbody>
+        </table>);
 }
 
     const onRenderCell = (args: any) => {

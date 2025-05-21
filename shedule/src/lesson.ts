@@ -26,7 +26,7 @@ class Lesson {
                 this.type_id = 4;
                 break;
         }
-        this.type_id = Number.parseInt(type_id);
+        //this.type_id = Number.parseInt(type_id);
         this.building_id = Number.parseInt(building_id);
 
         this.start_time = `${start_time.getHours().toString().padStart(2, '0')}:${start_time.getMinutes().toString().padStart(2, '0')}`;

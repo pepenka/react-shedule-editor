@@ -11,72 +11,13 @@
 
 
 #root {
-    display: flex;
-    align-content: start;
-    justify-items: left;
+    width: 100%;
 }
 
 body {
-    place-items: start left;
+    place-items: start;
+    max-width: 1600px;
 }
-
-/*.lesson-form {
-    margin-top: 10px;
-    border: 2px solid #191919;
-    border-radius: 10px;
-    width: 290px;
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.week-container {
-    border: 2px solid #191919;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.lesson-form__description-container {
-    display: flow;
-    gap: 10px 10px;
-}
-
-.lesson-form__description-container > * {
-    display: block;
-}
-
-.lesson-form__input-container {
-gap: 10px;
-}
-
-.lesson-form__input-container > * {
-    display: block;
-}
-
-
-.day-container {
-    display: block;
-    justify-items: center;
-    width: 290px;
-    border: 2px solid #00ff21;
-}
-
-.add-lesson-button {
-    display: block;
-}
-
-.input-container {
-    display: flex;
-    justify-content: space-between;
-}
-
-.teacher-label {
-    display: block;
-}*/
-
-
-
 
 .schedule-save-button {
     border: solid 3px black;
@@ -90,4 +31,34 @@ gap: 10px;
 
 .week-evennes-description {
     padding-top: 70px;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    grid-column-gap: 10px;
+    width: 100%;
+}
+
+.nav-element-container {
+    flex: 1;
+    color: white;
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+}
+
+.nav-element-container__element {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 80px;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.nav-element-container :hover{
+    background-color: gray;
 }

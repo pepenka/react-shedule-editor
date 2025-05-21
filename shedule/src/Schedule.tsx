@@ -24,6 +24,18 @@ function Schedule() {
     }
 
     const editorTemplate = (props) => {
+        console.log(props);
+        
+        let date: Date;
+        if (props.EndTime) {
+            console.log(props.EndTime);
+            date = props.EndTime;
+            console.log(date);
+            
+            date.setHours(date.getHours() + 1);
+            console.log(date);
+        }
+
         return (props !== undefined ? <table className="custom-event-editor" > <tbody>
             <tr><td className="e-textlabel">Предмет</td><td colSpan={4}>
                 <input id="Summary" className="e-field e-input" type="text" name="Subject"  />
@@ -38,20 +50,35 @@ function Schedule() {
             </td></tr>
 
             <tr><td className="e-textlabel">Тип занятия</td><td colSpan={4}>
-                <DropDownListComponent id="lessonType" placeholder='' data-name="lessonType" className="e-field" dataSource={['Лабораторная работа', 'Практика', 'Лекция', 'Другое']} value={props.EventType || null}></DropDownListComponent>
+                <DropDownListComponent
+                    id="lessonType"
+                    placeholder=''
+                    data-name="lessonType"
+                    className="e-field"
+                    dataSource={['Лабораторная работа', 'Практика', 'Лекция', 'Другое']}
+                    value={props.EventType || null}
+                    name="lessonType">
+                </DropDownListComponent>
             </td></tr>
 
             <tr><td className="e-textlabel">Корпус</td><td colSpan={4}>
-                <DropDownListComponent id="building" placeholder='' data-name="building" className="e-field" dataSource={['1', '2', '3', '4', '5']} value={props.EventType || null}></DropDownListComponent>
+                <DropDownListComponent
+                    id="building" placeholder=''
+                    data-name="building"
+                    className="e-field"
+                    dataSource={['1', '2', '3', '4', '5']}
+                    value={props.EventType || null}>
+                </DropDownListComponent>
             </td></tr>
 
 
             <tr><td className="e-textlabel">Начало в </td><td colSpan={4}>
                 <DateTimePickerComponent
                     step={5}
-                    format='hh:mm'
+                    format='HH:mm'
                     id="StartTime"
                     data-name="StartTime"
+                    name="StartTime"
                     value={new Date(props.endTime || props.EndTime)}
                     className="e-field"
 
@@ -69,10 +96,10 @@ function Schedule() {
             <tr><td className="e-textlabel">Конец в </td><td colSpan={4}>
                 <DateTimePickerComponent
                     step={5}
-                    format='hh:mm'
+                    format='HH:mm'
                     id="EndTime"
                     data-name="EndTime"
-                    value={new Date(props.endTime || props.EndTime)}
+                    value={date || new Date(props.endTime || props.EndTime)}
                     className="e-field"
 
                     min={new Date(
@@ -85,10 +112,6 @@ function Schedule() {
                         new Date(props.endTime || props.EndTime).getDay(), 21, 20)} >
                 </DateTimePickerComponent>
             </td></tr>
-
-            {/*<tr><td className="e-textlabel">Reason</td><td colSpan={4}>*/}
-            {/*    <textarea id="Description" className="e-field e-input" name="Description" rows={3} cols={50} ></textarea>*/}
-            {/*</td></tr>*/}
         </tbody ></table > : <div></div>);
 }
 
@@ -194,7 +217,7 @@ function Schedule() {
                 <Inject services={[Day, Week, DragAndDrop]}></Inject>
             </ScheduleComponent>
 
-            <div className='week-evennes-description'>Чётная неделя</div>
+            <div className='week-evennes-description'>Нечётная неделя</div>
             <ScheduleComponent
                 editorTemplate={editorTemplate.bind(this)}
                 showQuickInfo={false}
